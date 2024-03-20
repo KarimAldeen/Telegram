@@ -1,0 +1,418 @@
+.Home_Page {
+    width: 100vw;
+    display: flex;
+    color: var(--text);
+    align-items: stretch;
+    overflow: hidden;
+    height: 100vh;
+
+
+    .Home_Left {
+        padding: 8px 8px;
+        flex: 2;
+        background: var(--bg);
+        max-width: 420px;
+
+        .ChatCards {
+            display: flex;
+            flex-direction: column;
+
+            // gap: 6px;
+            .ChatCard {
+                background: var(--bg);
+                padding: 10px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+
+                justify-content: space-between;
+                transition: .3s ease-in-out;
+
+                &:hover {
+                    background: var(--hover);
+                    cursor: pointer;
+                    scale: 1.02;
+                }
+
+                .UserImage {
+                    width: 55px;
+                    height: 55px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                }
+
+                >span {
+                    display: flex;
+                    gap: 10px;
+                    width: 80%;
+
+                    div {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            @include ellipse;
+                        }
+
+                        p {
+                            font-size: 13px;
+                            @include ellipse;
+                            color: var(--subtext);
+                        }
+                    }
+                }
+
+                >p {
+                    color: var(--subtext);
+                    font-size: 14px;
+
+                }
+
+            }
+
+        }
+
+        .SideNav {
+            width: 100%;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5%;
+            padding-inline: 20px;
+
+            >svg {
+                font-size: 30px;
+
+            }
+
+            .SearchBar {
+                width: 100%;
+                position: relative;
+                background-color: var(--bg2);
+                border-radius: 30px;
+                border: 1px solid var(--hover);
+
+                @include Flex;
+
+                input {
+
+                    width: 80%;
+                    background: var(--bg2);
+                    color: var(--text);
+                    outline: none;
+                    border: none;
+                    padding: 8px 10px;
+
+                    // border-radius: 30px;
+                    &::placeholder {
+                        color: var(--subtext);
+
+                    }
+
+                }
+
+                svg {
+                    position: absolute;
+                    top: 12px;
+                    left: 15px;
+                    color: var(--subtext);
+                }
+
+            }
+
+        }
+    }
+
+    .PageNone {
+        flex: 3;
+        background: var(--bg2);
+
+
+        >* {
+            display: none;
+        }
+    }
+
+    .Home_Right {
+
+        padding-left: 2px;
+        flex: 3;
+        background: var(--bg2);
+        position: relative;
+
+
+
+        .RightNav {
+            background: var(--bg);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+
+
+            >span {
+
+                display: flex;
+                gap: 10px;
+                width: 80%;
+
+                .UserImage {
+                    width: 40px;
+                    height: 40px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                }
+
+                div {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    h1 {
+                        font-size: 16px;
+                        font-weight: bold;
+                        @include ellipse;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        @include ellipse;
+                        color: var(--subtext);
+                    }
+                }
+            }
+
+            >div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                svg {
+                    font-size: 20px;
+                    margin-inline: 10px;
+                    color: var(--subtext);
+                }
+            }
+
+        }
+
+        .Home_Right_Body {
+            --BodyPadding: 10vw;
+            padding-block: 20px 30px;
+            overflow-y: auto;
+            height: 70%;
+
+            padding-inline: var(--BodyPadding);
+
+            scroll-behavior: smooth;
+            scroll-padding: 10rem;
+            &::-webkit-scrollbar {
+                width: 8px; /* Adjust the width as needed */
+              }
+            
+              /* Handle */
+              &::-webkit-scrollbar-thumb {
+                background-color: transparent;
+                border-radius: 3px; /* Adjust border-radius as needed */
+              }
+            
+              /* Track */
+              &::-webkit-scrollbar-track {
+                background-color: transparent; /* Set to desired background color */
+              }
+                &:hover{
+                    &::-webkit-scrollbar {
+                        width: 8px; /* Adjust the width as needed */
+                      }
+                    
+                      /* Handle */
+                      &::-webkit-scrollbar-thumb {
+                        background-color: var(--primary);
+                        border-radius: 3px; /* Adjust border-radius as needed */
+                      }
+                    
+                      /* Track */
+                      &::-webkit-scrollbar-track {
+                        background-color: transparent; /* Set to desired background color */
+                      }
+                }
+
+
+            .Messages {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+
+                .Message_Container {
+
+                    display: flex;
+
+                    &:has(.HisMessage) {
+                        justify-content: end;
+                    }
+
+                    .HisMessage {
+                        background: var(--bg);
+                        padding: 10px 30px;
+                        text-align: end;
+                        font-weight: 900;
+                        color: var(--text);
+                        font-family: arial;
+                        position: relative;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        border-bottom-left-radius: 10px;
+
+                        &:before {
+                            content: "";
+                            width: 0px;
+                            height: 0px;
+                            position: absolute;
+                            border-left: 10px solid var(--bg);
+                            border-right: 10px solid transparent;
+                            border-bottom: 10px solid var(--bg);
+                            border-top: 10px solid transparent;
+                            right: -10px;
+                            bottom: 0;
+                        }
+
+                    }
+
+                    .MyMessage {
+                        background: var(--primary);
+                        padding: 10px 30px;
+                        text-align: center;
+                        font-weight: 900;
+                        color: var(--text);
+                        font-family: arial;
+                        position: relative;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        text-align: start;
+
+                        &:before {
+                            content: "";
+                            width: 0px;
+                            height: 0px;
+                            position: absolute;
+                            border-right: 10px solid var(--primary);
+                            border-left: 10px solid transparent;
+                            border-bottom: 10px solid var(--primary);
+                            border-top: 10px solid transparent;
+                            left: -10px;
+                            bottom: 0;
+                        }
+
+                    }
+
+                }
+            }
+
+            .emoji-picker {
+                position: absolute;
+                top: -430px;
+                left: 0;
+
+                svg {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: var(--bg);
+                    font-size: 20px;
+
+                }
+
+
+            }
+
+            .BottomInput {
+                position: absolute;
+                bottom: 20px;
+                width: calc(100% - var(--BodyPadding) - var(--BodyPadding));
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+
+                >span {
+                    padding: 14px;
+                    border-radius: 50%;
+                    background-color: var(--bg);
+
+                    svg {
+                        color: var(--text);
+                        font-size: 22px;
+
+                    }
+                }
+
+                .SearchBar {
+                    background-color: var(--bg);
+                    color: var(--text);
+                    border: 1px solid var(--hover);
+
+                    margin-inline: auto;
+                    border-radius: 10px;
+                    width: 100%;
+                    position: relative;
+                    border-top-right-radius: 40px;
+                    border-bottom-right-radius: 40px;
+
+
+                    .Input {
+
+                        width: 80%;
+                        margin-left: 8%;
+                        background: var(--bg);
+                        color: var(--text);
+                        outline: none;
+                        border: none;
+                        padding: 14px 3%;
+                        font-weight: bold;
+                        font-size: 18px;
+
+                        // border-radius: 30px;
+                        &::placeholder {
+                            color: var(--subtext);
+                            font-weight: bold;
+                            font-size: 18px;
+
+                        }
+
+                    }
+
+                    >svg {
+                        position: absolute;
+                        top: 30%;
+                        left: 15px;
+                        font-size: 24px;
+                        color: var(--subtext);
+                    }
+
+                    .MenuSvg {
+                        svg {
+                            position: absolute;
+                            top: 30%;
+                            right: 15px;
+                            font-size: 24px;
+                            color: var(--subtext);
+                        }
+                    }
+                }
+
+
+
+            }
+
+
+        }
+
+    }
+}
